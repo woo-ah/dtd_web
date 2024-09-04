@@ -4,7 +4,7 @@ function MapPage() {
   return (
     <div>
       <h1>Map Page</h1>
-      <p>This is the Map Page.</p>
+      <p>이민서</p>
     </div>
   );
 }
