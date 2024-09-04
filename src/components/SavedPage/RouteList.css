@@ -1,0 +1,25 @@
+.save-no-routes {
+    text-align: center;
+    padding: 10vw 2vw;
+  }
+  
+  .save-no-routes-text {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+    margin-bottom: 4vw;
+  }
+  
+  .save-add-route-button {
+    background-color: #ffc546;
+    border: none;
+    padding: 3vw 5vw;
+    font-size: 4vw;
+    color: #333333;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .save-route-list {
+    margin-top: 4vw;
+  }
+  

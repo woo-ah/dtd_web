@@ -1,0 +1,34 @@
+.save-tab-navigation {
+    display: flex;
+    justify-content: space-around;
+    padding: 2vw 0;
+    background-color: #333333;
+    border-bottom: 1px solid #ffffff;
+    position: relative;
+  }
+  
+  .save-tab-button {
+    flex: 1;
+    background: none;
+    border: none;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+    color: #ffffff;
+    padding: 1vw;
+    cursor: pointer;
+  }
+  
+  .save-nav-active {
+    color: #ffc546;
+  }
+  
+  .save-tab-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.5vw;
+    width: 50%;
+    background-color: #ffc546;
+    transition: transform 0.3s ease;
+  }
+  

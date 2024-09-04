@@ -1,0 +1,35 @@
+/* src/css/UnlockOption.css */
+.unlock-option {
+    display: flex;
+    align-items: center;
+    background-color: #444444;
+    border-radius: 10px;
+    padding: 3vw;
+    margin-bottom: 4vw;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  .unlock-text h2 {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+    margin-bottom: 1vw;
+  }
+  
+  .unlock-text p {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 3.5vw;
+    color: #ffc546;
+  }
+  
+  .unlock-icon {
+    font-size: 7vw;
+    margin-right: 3vw;
+  }
+  
+  .unlock-arrow {
+    position: absolute;
+    right: 3vw;
+    font-size: 6vw;
+  }
+  

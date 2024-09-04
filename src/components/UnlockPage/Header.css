@@ -1,0 +1,14 @@
+/* src/css/UnlockHeader.css */
+.unlock-title-ori {
+    text-align: center;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 5vw;
+    margin-bottom: 2vw;
+  }
+  
+  .unlock-divider-ori {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin-bottom: 4vw;
+  }
+  

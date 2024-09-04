@@ -1,0 +1,21 @@
+/* src/css/ProfileHeader.css */
+.profile-header {
+    padding: 10px;
+    background-color: #333333;
+  }
+  
+  .profile-title {
+    text-align: center;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 5vw;
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  .profile-divider {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin-top: 10px;
+    width: 100%;
+  }
+  

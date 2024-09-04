@@ -1,0 +1,33 @@
+/* src/css/UnlockHeader.css */
+.unlock-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #333333; /* 배경색 추가 */
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 6vw;
+    cursor: pointer;
+    margin-right: 10px; /* 버튼과 제목 사이의 간격 추가 */
+  }
+  
+  .unlock-title {
+    flex: 1;
+    text-align: center;
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 5vw;
+    margin: 0;
+    color: #ffffff; /* 제목 글자 색상 */
+  }
+  
+  .unlock-divider {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin-top: 10px;
+    width: 100%;
+  }
+  

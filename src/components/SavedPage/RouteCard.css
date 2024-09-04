@@ -1,0 +1,38 @@
+.save-route-card {
+    background-color: #444444;
+    border-radius: 10px;
+    padding: 4vw;
+    margin-bottom: 4vw;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  .save-route-card-title {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+    margin-bottom: 2vw;
+  }
+  
+  .save-route-details {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 3.5vw;
+    margin-bottom: 2vw;
+  }
+  
+  .save-route-step {
+    margin-bottom: 1vw;
+  }
+  
+  .save-route-card-end {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+  }
+  
+  .save-favorite-icon {
+    position: absolute;
+    top: 4vw;
+    right: 4vw;
+    font-size: 5vw;
+    color: #ffc546;
+  }
+  
