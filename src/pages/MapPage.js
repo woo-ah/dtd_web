@@ -3,8 +3,8 @@ import React from 'react';
 function MapPage() {
   return (
     <div>
-      <h1>Map Page</h1>
-      <p>이민서</p>
+      <h1>Wooah Map Page</h1>
+      <p>This is the Map Page.</p>
     </div>
   );
 }
