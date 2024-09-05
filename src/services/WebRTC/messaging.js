@@ -1,5 +1,4 @@
-//# 메시지 전송 및 수신 기능
-// services/WebRTC/messaging.js
+// src/services/WebRTC/messaging.js
 import { database } from '../Door/firebaseService';
 
 // 메시지 전송
@@ -7,6 +6,7 @@ export const sendMessage = (roomId, sender, content) => {
   database.ref(`rooms/${roomId}/messages`).push({
     sender,
     content,
+    timestamp: Date.now()
   });
 };
 

@@ -1,28 +1,54 @@
 // src/pages/InnerNavi/InnerBroadcastVideoPage.js
-import React, { useEffect, useRef } from 'react';
-import { createPeerConnection } from '../../services/WebRTC/peerConnection';
-import { startLocalVideo, addLocalStreamToPeerConnection } from '../../services/WebRTC/videoStream';  // videoStream.js에서 가져옴
+import React, { useState, useEffect } from 'react';
+import { getRoomList } from '../../services/Door/firebaseService';
+import { sendMessage } from '../../services/WebRTC/messaging';
+import { useNavigate } from 'react-router-dom';
 
-function InnerBroadcastVideoPage({ roomId }) {
-  const localVideoRef = useRef(null);
+function InnerBroadcastVideoPage() {
+  const [rooms, setRooms] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // 로컬 비디오 스트림 시작
-    startLocalVideo(localVideoRef).then((localStream) => {
-      // WebRTC 피어 연결 설정
-      const peerConnection = createPeerConnection(roomId, null, true);  // 스트리밍하는 사람
-      
-      // 로컬 비디오 스트림을 피어 연결에 추가
-      addLocalStreamToPeerConnection(localStream, peerConnection);
+    async function fetchRooms() {
+      const roomList = await getRoomList();
+      setRooms(roomList);
+    }
+    fetchRooms();
+  }, []);
 
-      return () => peerConnection.close();  // 컴포넌트 언마운트 시 연결 해제
-    });
-  }, [roomId]);
+  const handleSendMessage = () => {
+    if (selectedRoom && message.trim()) {
+      sendMessage(selectedRoom, 'Broadcaster', message);
+      setMessage('');  // 메시지 전송 후 입력란 초기화
+    }
+  };
 
   return (
     <div>
-      <h1>스트리밍 중...</h1>
-      <video ref={localVideoRef} autoPlay playsInline muted /> {/* 자신을 보므로 음소거 */}
+      <h1>생성된 룸 목록</h1>
+      <ul>
+        {rooms.map((room) => (
+          <li key={room.id}>
+            {room.name}
+            <button onClick={() => setSelectedRoom(room.id)}>선택</button>
+          </li>
+        ))}
+      </ul>
+
+      {selectedRoom && (
+        <div>
+          <h2>선택된 룸: {selectedRoom}</h2>
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="메시지 입력"
+          />
+          <button onClick={handleSendMessage}>메시지 보내기</button>
+        </div>
+      )}
     </div>
   );
 }

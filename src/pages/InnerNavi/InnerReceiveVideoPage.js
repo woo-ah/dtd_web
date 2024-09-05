@@ -1,58 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+// src/pages/InnerNavi/InnerReceiveVideoPage.js
+import React, { useEffect, useRef } from 'react';
+import { createRoom } from '../../services/Door/firebaseService';
 import { createPeerConnection } from '../../services/WebRTC/peerConnection';
-import { sendMessage, receiveMessages } from '../../services/WebRTC/messaging';  // 메시지 관련 함수 사용
+import { addLocalStreamToPeerConnection, startLocalVideo } from '../../services/WebRTC/videoStream';  // 수정된 경로
 
-function InnerReceiveVideoPage({ roomId }) {
-  const remoteVideoRef = useRef(null);
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+function InnerReceiveVideoPage() {
+  const localVideoRef = useRef(null);
 
   useEffect(() => {
-    // WebRTC 피어 연결 설정
-    const peerConnection = createPeerConnection(roomId, (stream) => {
-      remoteVideoRef.current.srcObject = stream;
-    }, false);  // 시청하는 사람
-
-    // 메시지 수신 설정
-    const unsubscribeMessages = receiveMessages(roomId, (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
-
-    return () => {
-      peerConnection.close();  // 컴포넌트 언마운트 시 연결 해제
-      unsubscribeMessages();  // 메시지 수신 구독 해제
-    };
-  }, [roomId]);
-
-  const handleSendMessage = () => {
-    if (message.trim()) {
-      sendMessage(roomId, 'Viewer', message);  // 'Viewer' 역할로 메시지 전송
-      setMessage('');  // 메시지 입력란 초기화
+    async function startStreaming() {
+      const newRoomId = await createRoom();  // 새로운 방 생성
+      const localStream = await startLocalVideo(localVideoRef);  // 로컬 비디오 시작
+      const peerConnection = createPeerConnection(newRoomId, null, true);  // 스트리머로 연결
+      addLocalStreamToPeerConnection(localStream, peerConnection);  // 스트림을 피어 연결에 추가
     }
-  };
+
+    startStreaming();
+  }, []);
 
   return (
     <div>
-      <h1>시청 중...</h1>
-      <video ref={remoteVideoRef} autoPlay playsInline />
-
-      {/* 메시지 목록 */}
-      <ul>
-        {messages.map((msg, index) => (
-          <li key={index}>
-            <strong>{msg.sender}:</strong> {msg.content}
-          </li>
-        ))}
-      </ul>
-
-      {/* 메시지 입력 */}
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="메시지 입력"
-      />
-      <button onClick={handleSendMessage}>메시지 보내기</button>
+      <h1>영상 송출 중...</h1>
+      <video ref={localVideoRef} autoPlay playsInline muted />
     </div>
   );
 }
