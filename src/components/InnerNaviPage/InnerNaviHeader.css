@@ -2,7 +2,7 @@
 .innernavi-header {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 4vw;
     background-color: #333333; /* 배경색 추가 */
   }
   
@@ -12,22 +12,19 @@
     color: white;
     font-size: 6vw;
     cursor: pointer;
-    margin-right: 10px; /* 버튼과 제목 사이의 간격 추가 */
   }
   
   .innernavi-title {
     flex: 1;
     text-align: center;
     font-family: 'Pretendard Variable', sans-serif;
-    font-size: 5vw;
-    margin: 0;
+    font-size: 5.5vw;
     color: #ffffff; /* 제목 글자 색상 */
   }
   
   .innernavi-divider {
     border: none;
-    border-top: 1px solid #ffffff;
-    margin-top: 10px;
+    border-top: 0.5vw solid #ffffff;
     width: 100%;
   }
   

@@ -1,13 +1,20 @@
 // src/pages/ReportIssuePage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import ProfileHeader from '../../components/ProfilePage/ProfileHeader';
 
 function ReportIssuePage() {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <h1>불편함 신고하기</h1>
-      <p>사용 시 불편한 점을 신고할 수 있습니다.</p>
+    <div className="unlock-page">
+      <ProfileHeader title="불편함 신고하기" onBack={() => navigate(-1)} />
+      <div className="content">
+        <p> 활동 목록</p>
+      </div>
     </div>
   );
 }
 
 export default ReportIssuePage;
+

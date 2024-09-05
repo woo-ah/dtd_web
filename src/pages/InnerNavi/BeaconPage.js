@@ -8,7 +8,7 @@ function BeaconPage() {
 
   return (
     <div className="unlock-page">
-      <InnerNaviHeader title="문 정보 검색하기" onBack={() => navigate(-1)} />
+      <InnerNaviHeader title="비콘으로 내부 길 찾기" onBack={() => navigate(-1)} />
       <div className="content">
         <p> 비콘 내용</p>
       </div>

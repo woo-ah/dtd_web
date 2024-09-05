@@ -1,21 +1,29 @@
-/* src/css/ProfileHeader.css */
+
 .profile-header {
-    padding: 10px;
-    background-color: #333333;
-  }
-  
-  .profile-title {
-    text-align: center;
-    font-family: 'Pretendard Variable', sans-serif;
-    font-size: 5vw;
-    margin: 0;
-    color: #ffffff;
-  }
-  
-  .profile-divider {
-    border: none;
-    border-top: 1px solid #ffffff;
-    margin-top: 10px;
-    width: 100%;
-  }
-  
+  display: flex;
+  align-items: center;
+  padding: 4vw;
+  background-color: #333333; /* 배경색 추가 */
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 6vw;
+  cursor: pointer;
+}
+
+.profile-title {
+  flex: 1;
+  text-align: center;
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 5.5vw;
+  color: #ffffff; /* 제목 글자 색상 */
+}
+
+.profile-divider {
+  border: none;
+  border-top: 0.5vw solid #ffffff;
+  width: 100%;
+}
