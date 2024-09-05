@@ -1,11 +1,11 @@
-/* src/css/UnlockHeader.css */
-.unlock-title-ori {
+/* src/css/Header.css */
+.profile-title-ori {
     text-align: center;
     font-size: 6vw;
     padding: 5vw;
   }
   
-  .unlock-divider-ori {
+  .profile-divider-ori {
     border: none;
     border-top: 1px solid #ffffff;
     margin-bottom: 4vw;

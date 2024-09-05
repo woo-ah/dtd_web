@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import '../css/ProfilePage.css';
-import ProfileHeader from '../components/ProfilePage/ProfileHeader';
+import Header from '../components/ProfilePage/Header';
 import ProfileOption from '../components/ProfilePage/ProfileOption';
 import { FaUser, FaEdit, FaExclamationTriangle, FaHistory } from 'react-icons/fa';
 
@@ -11,7 +11,7 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
-      <ProfileHeader title="마이 페이지" />
+      <Header/>
       
       <ProfileOption 
         icon={FaUser} 

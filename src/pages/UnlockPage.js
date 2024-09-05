@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
-import UnlockHeader from '../components/UnlockPage/Header';
+import Header from '../components/UnlockPage/Header';
 import UnlockOption from '../components/UnlockPage/UnlockOption';
-import { FaSearch, FaCamera, FaVideo } from 'react-icons/fa';
+import { FaSearch, FaCamera, FaVideo, FaMicrophone } from 'react-icons/fa';
 import '../css/UnlockPage.css'; // 페이지 전용 스타일(있다면) 임포트
 
 function UnlockPage() {
@@ -10,7 +10,7 @@ function UnlockPage() {
 
   return (
     <div className="unlock-page">
-      <UnlockHeader />
+      <Header/>
       
       <UnlockOption 
         icon={FaSearch} 
@@ -34,7 +34,7 @@ function UnlockPage() {
       />
       
       <UnlockOption 
-        icon={FaVideo} 
+        icon={FaMicrophone} 
         title="영상 중계 하기" 
         description="촬영된 영상 실시간 안내 하기"
         onClick={() => navigate('/broadcast-video')}
