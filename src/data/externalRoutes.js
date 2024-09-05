@@ -2,7 +2,7 @@
 export const externalRoutes = [
     {
         id: 1,
-        departure: '두호SK뷰푸르지오2단지아파트',
+        departure: '두호SK뷰푸르지오2단지아파ㅇㄴㄹㄴㅇㄴ언ㄹㅌ',
         arrival: '한동대학교',
         route: [
             { type: 'walk', description: '도보 10분' },

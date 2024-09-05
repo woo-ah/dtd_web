@@ -1,14 +1,12 @@
 .save-header {
     text-align: center;
-    padding: 2vw;
+    padding: 5vw;
     background-color: #333333;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
   }
   
   .save-header-title {
     font-family: 'Pretendard Variable', sans-serif;
-    font-size: 5vw;
+    font-size: 6.5vw;
     color: #ffffff;
   }
   

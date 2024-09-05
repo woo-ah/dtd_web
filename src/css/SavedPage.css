@@ -1,7 +1,14 @@
 .save-page-container {
-    padding: 2vw;
     background-color: #333333;
     min-height: 100vh;
+    color: #ffffff;
+  }
+
+  .saved-route-count {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-weight: 500;
+    font-size: 5.5vw;
+    margin: 4vw;
     color: #ffffff;
   }
   

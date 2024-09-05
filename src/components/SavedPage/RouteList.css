@@ -1,25 +1,42 @@
 .save-no-routes {
-    text-align: center;
-    padding: 10vw 2vw;
-  }
-  
-  .save-no-routes-text {
-    font-family: 'Pretendard Variable', sans-serif;
-    font-size: 4vw;
-    margin-bottom: 4vw;
-  }
-  
-  .save-add-route-button {
-    background-color: #ffc546;
-    border: none;
-    padding: 3vw 5vw;
-    font-size: 4vw;
-    color: #333333;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .save-route-list {
-    margin-top: 4vw;
-  }
-  
+  text-align: center;
+  margin: 6vw;
+  padding-top: 40vw;
+}
+
+.save-no-routes-text {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 5.5vw;
+  margin-bottom: 4vw;
+  color: #858585;
+}
+
+.save-add-route-button {
+  background-color: #ffc546;
+  border: none;
+  padding: 4vw 15vw;
+  font-size: 6vw;
+  font-weight: 600;
+  color: #333333;
+  border-radius: 10vw;
+  cursor: pointer;
+  margin-top: 10vw;
+  box-shadow: 0vw 3vw 2vw rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.save-route-list {
+  margin: 4vw;
+  max-height: 65vh; /* RouteList의 최대 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+  padding-right: 2vw; /* 스크롤 바와 컨텐츠 사이의 여유 공간 추가 */
+}
+
+/* 스크롤바 숨기기 */
+.save-route-list::-webkit-scrollbar {
+  display: none; /* 웹킷 브라우저에서 스크롤바 숨기기 */
+}
+
+.save-route-list {
+  -ms-overflow-style: none;  /* 인터넷 익스플로러와 엣지에서 스크롤바 숨기기 */
+  scrollbar-width: none;  /* 파이어폭스에서 스크롤바 숨기기 */
+}

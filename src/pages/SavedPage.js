@@ -18,6 +18,7 @@ function SavedPage() {
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
       />
+      <div className="saved-route-count">전체 경로: {routes.length} 개</div>
       <RouteList routes={routes} activeTab={activeTab} />
     </div>
   );

@@ -1,3 +1,4 @@
+// src/components/TabNavigation.js
 import React from 'react';
 import './TabNavigation.css'; // CSS 파일 임포트
 

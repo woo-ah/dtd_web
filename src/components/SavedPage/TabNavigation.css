@@ -1,34 +1,38 @@
 .save-tab-navigation {
-    display: flex;
-    justify-content: space-around;
-    padding: 2vw 0;
-    background-color: #333333;
-    border-bottom: 1px solid #ffffff;
-    position: relative;
-  }
-  
-  .save-tab-button {
-    flex: 1;
-    background: none;
-    border: none;
-    font-family: 'Pretendard Variable', sans-serif;
-    font-size: 4vw;
-    color: #ffffff;
-    padding: 1vw;
-    cursor: pointer;
-  }
-  
-  .save-nav-active {
-    color: #ffc546;
-  }
-  
-  .save-tab-indicator {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 0.5vw;
-    width: 50%;
-    background-color: #ffc546;
-    transition: transform 0.3s ease;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  background-color: #333333;
+  border-bottom: 1px solid #ffffff;
+  position: relative;
+}
+
+.save-tab-button {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 5vw;
+  color: #ffffff;
+  padding: 3vw;
+  cursor: pointer;
+}
+
+.save-nav-active {
+  color: #ffc546;
+}
+
+.save-tab-indicator {
+  position: absolute;
+  top: 97%; /* 노란색 바의 위치를 컨텐츠 바로 아래로 설정 */
+  left: 0;
+  transform: translateX(0%);
+  width: 50%; /* 노란색 바의 너비를 vw 단위로 설정 */
+  height: 1vw; /* 노란색 바의 높이를 vw 단위로 설정 */
+  background-color: #ffc546;
+  border-radius: 10vw;
+  transition: transform 0.3s ease;
+}
+
+.save-tab-button.save-nav-active ~ .save-tab-indicator {
+  transform: translateX(100%);
+}

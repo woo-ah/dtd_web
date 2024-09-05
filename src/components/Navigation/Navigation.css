@@ -51,11 +51,11 @@
 .nav-active::after {
   content: '';
   position: absolute;
-  top: -5.5vw; /* 노란색 바의 위치를 하얀색 선 위로 설정 */
+  top: -5.7vw; /* 노란색 바의 위치를 하얀색 선 위로 설정 */
   left: 50%;
   transform: translateX(-50%);
   width: 17vw; /* 노란색 바의 너비를 vw 단위로 설정 */
-  height: 1vw; /* 노란색 바의 높이를 vw 단위로 설정 */
+  height: 1.2vw; /* 노란색 바의 높이를 vw 단위로 설정 */
   background-color: #ffc546; /* 활성화된 아이템 위의 노란색 바 */
   border-radius: 10vw;
 }
