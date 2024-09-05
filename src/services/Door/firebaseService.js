@@ -43,3 +43,29 @@ export const uploadImageToFirebase = async (blob) => {
     return null;
   }
 };
+
+// 방 생성
+export const createRoom = async () => {
+  const newRoomRef = database.ref('rooms').push();  // 새 방 생성
+  const newRoomId = newRoomRef.key;
+  await newRoomRef.set({
+    name: `Room ${newRoomId}`,
+    createdAt: Date.now(),
+  });
+  return newRoomId;  // 새로 생성된 방 ID 반환
+};
+
+// 방 목록 가져오기
+export const getRoomList = async () => {
+  const snapshot = await database.ref('rooms').once('value');  // 방 목록 조회
+  const rooms = [];
+  snapshot.forEach((childSnapshot) => {
+    rooms.push({ id: childSnapshot.key, ...childSnapshot.val() });
+  });
+  return rooms;  // 방 목록 반환
+};
+
+// 방 참가 (추후 사용 가능)
+export const joinRoom = async (roomId) => {
+  console.log(`Joined room: ${roomId}`);  // 방 참가 로직은 추후 WebRTC와 함께 구현 가능
+};

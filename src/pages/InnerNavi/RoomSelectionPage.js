@@ -1,49 +1,52 @@
 // src/pages/RoomSelectionPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { createRoom, getRoomList } from '../../services/Door/firebaseService';  // Firebase 서비스 함수들 사용
 
 function RoomSelectionPage() {
-  const [roomId, setRoomId] = useState('');
-  const [role, setRole] = useState('');  // 역할 선택 (streamer, viewer)
+  const [rooms, setRooms] = useState([]); // 방 목록
   const navigate = useNavigate();
 
-  // 새로운 룸 생성
-  const handleCreateRoom = async (role) => {
-    const newRoomId = `room-${Math.random().toString(36).substring(7)}`; // 임시 roomId 생성
-    setRoomId(newRoomId);
-    navigate(`/room/${newRoomId}/${role}`);  // 선택된 역할과 함께 방으로 이동
+  useEffect(() => {
+    // 방 목록 불러오기
+    async function fetchRooms() {
+      const roomList = await getRoomList();
+      setRooms(roomList);
+    }
+    fetchRooms();
+  }, []);
+
+  // 새로운 방 생성
+  const handleCreateRoom = async () => {
+    const newRoomId = await createRoom();  // Firebase에서 방 생성
+    navigate(`/room/${newRoomId}/streamer`);  // 방 생성 후 바로 스트리밍 시작 (스트리머 역할)
   };
 
-  // 기존 룸 참가
-  const handleJoinRoom = async () => {
-    if (roomId && role) {
-      navigate(`/room/${roomId}/${role}`);  // 선택된 역할에 맞게 룸으로 이동
-    } else {
-      console.error("룸 ID와 역할을 입력하세요.");
-    }
+  // 방에 참가
+  const handleJoinRoom = (roomId) => {
+    navigate(`/room/${roomId}/viewer`);  // 방에 참가 (시청자 역할)
   };
 
   return (
     <div>
-      <h1>역할 선택 및 룸 참가</h1>
+      <h1>룸 선택</h1>
       
-      {/* 새로운 룸 생성 (스트리밍 또는 수신 역할 선택) */}
-      <button onClick={() => handleCreateRoom('streamer')}>새로운 스트리밍 룸 생성</button>
-      <button onClick={() => handleCreateRoom('viewer')}>새로운 시청 룸 생성</button>
+      {/* 방 생성 */}
+      <button onClick={handleCreateRoom}>새로운 룸 생성</button>
 
-      {/* 기존 룸 참가 (룸 ID와 역할 입력) */}
-      <input
-        type="text"
-        value={roomId}
-        onChange={(e) => setRoomId(e.target.value)}
-        placeholder="룸 ID 입력"
-      />
-      <select value={role} onChange={(e) => setRole(e.target.value)}>
-        <option value="">역할 선택</option>
-        <option value="streamer">스트리밍</option>
-        <option value="viewer">시청</option>
-      </select>
-      <button onClick={handleJoinRoom}>룸에 참가</button>
+      {/* 방 목록 표시 */}
+      {rooms.length > 0 ? (
+        <ul>
+          {rooms.map((room) => (
+            <li key={room.id}>
+              {room.name} 
+              <button onClick={() => handleJoinRoom(room.id)}>참가</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>생성된 방이 없습니다.</p>
+      )}
     </div>
   );
 }
