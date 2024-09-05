@@ -2,9 +2,9 @@ import React from 'react';
 import { FaWalking, FaBus, FaHeart } from 'react-icons/fa'; // 필요한 아이콘 임포트
 import './RouteCard.css'; // CSS 파일 임포트
 
-function RouteCard({ route }) {
+function RouteCard({ route, onClick }) {
   return (
-    <div className="save-route-card">
+    <div className="save-route-card" onClick={onClick}>
       <h2 className="save-route-card-title">출발: {route.departure}</h2>
       {route.isFavorite && <FaHeart className="save-favorite-icon" />}
       <div className="save-route-details">

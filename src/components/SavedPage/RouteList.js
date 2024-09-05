@@ -1,10 +1,13 @@
-import React from 'react';
+// src/components/RouteList.js
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅 임포트
 import RouteCard from './RouteCard';
+import Modal from './modal/RouteModal'; // 모달 컴포넌트 임포트
 import './RouteList.css'; // CSS 파일 임포트
 
 function RouteList({ routes, activeTab }) {
   const navigate = useNavigate(); // 페이지 이동을 위한 navigate 함수 생성
+  const [selectedRoute, setSelectedRoute] = useState(null);
 
   const handleAddRouteClick = () => {
     if (activeTab === 'external') {
@@ -12,6 +15,14 @@ function RouteList({ routes, activeTab }) {
     } else {
       navigate('/inner-navi'); // 내부 경로일 경우 /inner-navi로 이동
     }
+  };
+
+  const handleCardClick = (route) => {
+    setSelectedRoute(route); // 카드 클릭 시 모달에 표시할 경로를 설정
+  };
+
+  const handleCloseModal = () => {
+    setSelectedRoute(null); // 모달 창 닫기
   };
 
   if (routes.length === 0) {
@@ -27,8 +38,11 @@ function RouteList({ routes, activeTab }) {
     return (
       <div className="save-route-list">
         {routes.map((route, index) => (
-          <RouteCard key={index} route={route} />
+          <RouteCard key={index} route={route} onClick={() => handleCardClick(route)} />
         ))}
+        {selectedRoute && (
+          <Modal route={selectedRoute} onClose={handleCloseModal} />
+        )}
       </div>
     );
   }
