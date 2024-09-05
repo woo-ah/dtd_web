@@ -1,0 +1,36 @@
+
+.innernavi-option {
+    display: flex;
+    align-items: center;
+    border-radius: 6vw;
+    padding: 3vw;
+    margin: 4vw;
+    color: #ffffff;
+    position: relative;
+    border: 0.3vw solid #ffffff;
+  }
+  
+  .innernavi-text h2 {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 6vw;
+    font-weight: 500;
+    margin-bottom: 1vw;
+  }
+  
+  .innernavi-text p {
+    font-family: 'Pretendard Variable', sans-serif;
+    font-size: 4vw;
+    color: #ffc546;
+  }
+  
+  .innernavi-icon {
+    font-size: 7vw;
+    margin: 5vw;
+  }
+  
+  .innernavi-arrow {
+    position: absolute;
+    right: 3vw;
+    font-size: 6vw;
+  }
+  

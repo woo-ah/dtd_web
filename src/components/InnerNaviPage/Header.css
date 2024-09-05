@@ -1,0 +1,13 @@
+/* src/css/UnlockHeader.css */
+.innernavi-title-ori {
+    text-align: center;
+    font-size: 6vw;
+    padding: 5vw;
+  }
+  
+  .innernavi-divider-ori {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin-bottom: 4vw;
+  }
+  

@@ -15,10 +15,17 @@ import UnlockCameraPage from './pages/Unlock/UnlockCameraPage';
 import ReceiveVideoPage from './pages/Unlock/ReceiveVideoPage';
 import BroadcastVideoPage from './pages/Unlock/BroadcastVideoPage';
 
+import InnerNaviSearchPage from './pages/InnerNavi/InnerNaviSearchPage';
+import BeaconPage from './pages/InnerNavi/BeaconPage';
+import InnerReceiveVideoPage from './pages/InnerNavi/InnerReceiveVideoPage';
+import InnerBroadcastVideoPage from './pages/InnerNavi/InnerBroadcastVideoPage';
+
 import ProfileInfoPage from './pages/Profile/ProfileInfoPage';
 import ReportPage from './pages/Profile/ReportPage';
 import ReportIssuePage from './pages/Profile/ReportIssuePage';
 import ActivityPage from './pages/Profile/ActivityPage';
+
+
 
 
 function App() {
@@ -62,11 +69,20 @@ function AppContent() {
         <Route path="/receive-video" element={<ReceiveVideoPage />} />
         <Route path="/broadcast-video" element={<BroadcastVideoPage />} />
 
+        {/* InnerNavi 페이지들 */}
+        <Route path="/innernavi-search" element={<InnerNaviSearchPage />} />
+        <Route path="/innernavi-beacon" element={<BeaconPage />} />
+        <Route path="/inner-receive-video" element={<InnerReceiveVideoPage />} />
+        <Route path="/inner-broadcast-video" element={<InnerBroadcastVideoPage />} />
+
+
         {/* Profile 페이지들 */}
         <Route path="/profile-info" element={<ProfileInfoPage />} />
         <Route path="/profile-report" element={<ReportPage />} />
         <Route path="/profile-report-issue" element={<ReportIssuePage />} />
         <Route path="/profile-activity" element={<ActivityPage />} />
+
+        
 
         {/* 기본 경로로 접근할 때 SplashPage로 리다이렉트 */}
         <Route path="*" element={<Navigate to="/" replace />} />
