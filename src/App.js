@@ -15,6 +15,11 @@ import UnlockCameraPage from './pages/Unlock/UnlockCameraPage';
 import ReceiveVideoPage from './pages/Unlock/ReceiveVideoPage';
 import BroadcastVideoPage from './pages/Unlock/BroadcastVideoPage';
 
+import IntroductionPage from './pages/Unlock/UnlockCamera/IntroductionPage';
+import CameraPage from './pages/Unlock/UnlockCamera/CameraPage';
+import AnalyzingPage from './pages/Unlock/UnlockCamera/AnalyzingPage';
+import ResultPage from './pages/Unlock/UnlockCamera/ResultPage';
+
 import InnerNaviSearchPage from './pages/InnerNavi/InnerNaviSearchPage';
 import BeaconPage from './pages/InnerNavi/BeaconPage';
 import InnerReceiveVideoPage from './pages/InnerNavi/InnerReceiveVideoPage';
@@ -68,6 +73,12 @@ function AppContent() {
         <Route path="/unlock-camera" element={<UnlockCameraPage />} />
         <Route path="/receive-video" element={<ReceiveVideoPage />} />
         <Route path="/broadcast-video" element={<BroadcastVideoPage />} />
+
+        {/* UnlockCamera 페이지들 */}
+        <Route path="/unlock-camera-intro" element={<IntroductionPage />} />
+        <Route path="/unlock-camera-camera" element={<CameraPage />} />
+        <Route path="/unlock-camera-analyz" element={<AnalyzingPage />} />
+        <Route path="/unlock-camera-result" element={<ResultPage />} />
 
         {/* InnerNavi 페이지들 */}
         <Route path="/innernavi-search" element={<InnerNaviSearchPage />} />

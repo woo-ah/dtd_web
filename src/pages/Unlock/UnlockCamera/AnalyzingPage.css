@@ -1,0 +1,13 @@
+.unlockcamera-analyzing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333333; /* 배경 색상 */
+}
+
+.unlockcamera-analyzing-text {
+  font-size: 20vw;
+  color: #ffffff; /* 기본 글씨 색상 */
+  text-align: center;
+}

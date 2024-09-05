@@ -1,0 +1,47 @@
+.unlockcamera-introduction-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #333333; /* 배경 색상 */
+  color: #ffffff; /* 기본 글씨 색상 */
+  padding: 7vw;
+}
+
+.unlockcamera-intro-title {
+  font-size: 10vw; /* 제목 폰트 크기 */
+  margin-bottom: 4vw;
+  text-align: center;
+  font-weight: bold; /* 굵은 글씨 */
+  color: #ffffff; /* 제목 색상 */
+}
+.unlockcamera-description-container{
+  border-radius: 2vw;
+  border: 0.5vw solid #ffffff;
+  margin-bottom: 15vw;
+  margin-bottom: 15vw;
+  padding: 3vw;
+}
+
+.unlockcamera-intro-description {
+  font-size: 6vw; /* 본문 폰트 크기 */
+  text-align: center;
+  color: #ffffff; /* 본문 색상 */
+}
+
+.unlockcamera-intro-button {
+  background-color: #ffc546; /* 강조 색상 */
+  color: #333333; /* 버튼 텍스트 색상 */
+  border: none;
+  border-radius: 10vw;
+  padding: 5vw 25vw;
+  font-size: 6.5vw;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0vw 3vw 2vw rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.unlockcamera-intro-button:hover {
+  background-color: #e0ac38; /* 버튼에 마우스를 올렸을 때 색상 변경 */
+}

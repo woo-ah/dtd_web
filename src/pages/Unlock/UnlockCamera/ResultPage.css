@@ -1,0 +1,62 @@
+.unlockcamera-result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5vw;
+  background-color: #333333; /* 배경 색상 */
+  color: #ffffff; /* 기본 글씨 색상 */
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.unlockcamera-result-header {
+  font-size: 6vw;
+  margin-bottom: 5vw;
+}
+
+.unlockcamera-result-error {
+  font-size: 5vw;
+  color: #e74c3c; /* 에러 색상 */
+}
+
+.unlockcamera-result-image {
+  width: 100%;
+  border-radius: 2vw;
+  margin-bottom: 5vw;
+  border: 0.5vw solid #ffffff;
+}
+
+.unlockcamera-result-text {
+  font-size: 6vw;
+  text-align: center;
+  margin-bottom: 5vw;
+  border-radius: 2vw;
+  border: 0.5vw solid #ffffff;
+  padding: 3vw;
+}
+
+.unlockcamera-button-container {
+  display: flex;
+  gap: 5vw;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30vw;
+}
+
+.unlockcamera-result-button {
+  background-color: #ffc546; /* 강조색상 */
+  border: none;
+  border-radius: 10vw;
+  padding: 5vw 25vw;
+  font-size: 6.5vw;
+  font-weight: bold;
+  color: #333333; /* 버튼 텍스트 색상 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  box-shadow: 0vw 3vw 2vw rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.unlockcamera-button:hover {
+  background-color: #e0a738; /* 버튼 호버 색상 */
+}

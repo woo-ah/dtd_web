@@ -23,7 +23,7 @@ function UnlockPage() {
         icon={FaCamera} 
         title="문 사진 촬영하기" 
         description="문의 위치, 여는 방법, 문 사용법 안내"
-        onClick={() => navigate('/unlock-camera')}
+        onClick={() => navigate('/unlock-camera-intro')}
       />
       
       <UnlockOption 

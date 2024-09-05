@@ -1,0 +1,33 @@
+.unlockcamera-camera-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #333333; /* 배경 색상 */
+  padding: 5vw;
+}
+
+.unlockcamera-camera-video {
+  width: 100%;
+  max-width: 100vw;
+  border-radius: 2vw;
+  margin-bottom: 5vw;
+}
+
+.unlockcamera-camera-button {
+  background-color: #ffc546; /* 강조 색상 */
+  color: #333333; /* 버튼 텍스트 색상 */
+  border: none;
+  border-radius: 10vw;
+  padding: 5vw 25vw;
+  font-size: 6.5vw;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5vw;
+  box-shadow: 0vw 3vw 2vw rgba(0, 0, 0, 0.5); /* 그림자 추가 */
+}
+
+.unlockcamera-camera-button:hover {
+  background-color: #e0ac38; /* 버튼에 마우스를 올렸을 때 색상 변경 */
+}
