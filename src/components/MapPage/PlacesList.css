@@ -1,0 +1,49 @@
+.places-list {
+    background-color: #2c2c2c;
+    border-radius: 2vw; /* border-radius를 vw 단위로 변경 */
+    padding: 1vw; /* padding을 vw 단위로 변경 */
+    z-index: 2; /* 지도보다 앞에 오도록 z-index 설정 */
+    position: absolute; /* 절대 위치로 설정 */
+    top: 20vw; /* 상단에서부터 10vw 아래에 위치 */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 95%; /* 부모 컨테이너의 너비에 맞게 설정 */
+    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.5); /* box-shadow를 vw 단위로 변경 */
+    max-height: 87vw; /* max-height를 vw 단위로 변경 */
+    overflow-y: auto;
+}
+
+.places-list ul {
+    list-style-type: none;
+}
+
+.places-list li {
+    padding: 3vw; /* padding을 vw 단위로 변경 */
+    cursor: pointer;
+    border: 0.3vw solid #fff; /* border-bottom을 vw 단위로 변경 */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 5vw;
+    font-weight: 400;
+    border-radius: 2vw;
+    margin-bottom: 2vw;
+}
+
+.places-list p {
+    margin: 0;
+    font-size: 4vw; /* font-size를 vw 단위로 변경 */
+    color: #aaa;
+}
+
+.select-button {
+    background-color: #ffaa00;
+    border: none;
+    border-radius: 3vw; /* border-radius를 vw 단위로 변경 */
+    padding: 2vw 3vw; /* padding을 vw 단위로 변경 */
+    cursor: pointer;
+    color: #000;
+    font-weight: 600;
+    font-size: 6vw;
+}

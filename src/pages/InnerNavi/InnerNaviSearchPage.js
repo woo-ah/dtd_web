@@ -23,12 +23,12 @@ function InnerNaviSearchPage() {
     <InnerNaviHeader title="내부 길 안내 검색하기" onBack={() => navigate(-1)} />
     
     <div className="inner-navi-page">
-      <div className="search-bar">
-        <FaSearchLocation className="search-icon" />
+      <div className="inner-navi-search-bar">
+        <FaSearchLocation className="inner-navi-search-icon" />
         <input 
           type="text" 
           placeholder="건물명을 검색하세요" 
-          className="search-input"
+          className="inner-navi-search-input"
           onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
         />
         <FaMicrophone className="microphone-icon" onClick={handleSearch} />

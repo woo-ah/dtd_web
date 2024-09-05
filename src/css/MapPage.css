@@ -1,0 +1,25 @@
+.map-page {
+    padding: 4vw;
+    background-color: #333333;
+    color: #fff;
+    height: 100vh;
+}
+
+.map-container {
+    width: 100%;
+    border-radius: 4vw; /* 둥근 모서리 */
+    margin-top: 5vw;
+    height: 75vh; /* 지도 높이를 화면 전체로 설정 */
+    position: relative; /* 상대 위치로 설정하여 자식 요소(places-list)가 이 안에서 배치되도록 함 */
+}
+
+.loading-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5vw;
+    color: #ffffff;
+    text-align: center;
+    z-index: 2;
+}

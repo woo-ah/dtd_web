@@ -1,4 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import '../css/MapPage.css'; // CSS 파일 임포트
+import { searchNearbyPlaces, getDirections } from '../services/MapService'; // MapService.js에서 함수들 임포트
+import SearchBar from '../components/MapPage/SearchBar';
+import PlacesList from '../components/MapPage/PlacesList';
+import DirectionsList from '../components/MapPage/DirectionsList';
 
 const MapPage = () => {
   const mapRef = useRef(null);
@@ -11,6 +16,8 @@ const MapPage = () => {
   const [distances, setDistances] = useState({});
   const [directionsSteps, setDirectionsSteps] = useState([]);
   const [isListening, setIsListening] = useState(false); // 음성 인식 상태
+  const [showDirections, setShowDirections] = useState(false); // DirectionsList를 보여줄지 여부
+
   const recognitionRef = useRef(null); // 음성 인식 참조
 
   window.initMap = () => {
@@ -100,37 +107,8 @@ const MapPage = () => {
         zoom: 12,
       });
 
-      const service = new window.google.maps.places.PlacesService(map);
-
-      const searchNearbyPlaces = (query) => {
-        const request = {
-          location: currentPosition,
-          radius: '5000',
-          keyword: query,
-        };
-
-        service.nearbySearch(request, (results, status) => {
-          if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-            setPlaces(results);
-
-            const distancesObj = {};
-            results.forEach((place) => {
-              const destination = place.geometry.location;
-              const distance = window.google.maps.geometry.spherical.computeDistanceBetween(
-                new window.google.maps.LatLng(currentPosition.lat, currentPosition.lng),
-                destination
-              );
-              distancesObj[place.place_id] = (distance / 1000).toFixed(2);
-            });
-            setDistances(distancesObj);
-          } else {
-            console.error("Places search failed: " + status);
-          }
-        });
-      };
-
       if (query.length > 2) {
-        searchNearbyPlaces(query);
+        searchNearbyPlaces(map, currentPosition, query, setPlaces, setDistances);
       }
     }
   }, [mapLoaded, currentPosition, query]);
@@ -143,37 +121,13 @@ const MapPage = () => {
 
     setShowPlacesList(false);
 
-    const directionsService = new window.google.maps.DirectionsService();
-    const directionsRenderer = new window.google.maps.DirectionsRenderer();
     const map = new window.google.maps.Map(mapRef.current, {
       center: currentPosition,
       zoom: 12,
     });
-    directionsRenderer.setMap(map);
 
-    directionsService.route(
-      {
-        origin: currentPosition,
-        destination: destination,
-        travelMode: window.google.maps.TravelMode.TRANSIT,
-      },
-      (result, status) => {
-        if (status === window.google.maps.DirectionsStatus.OK) {
-          directionsRenderer.setDirections(result);
-
-          const steps = result.routes[0].legs[0].steps.map((step) => ({
-            distance: step.distance.text,
-            duration: step.duration.text,
-            instructions: step.instructions,
-          }));
-          setDirectionsSteps(steps);
-        } else if (status === window.google.maps.DirectionsStatus.ZERO_RESULTS) {
-          console.error("No routes found.");
-        } else {
-          console.error(`Error fetching directions: ${status}`);
-        }
-      }
-    );
+    getDirections(map, currentPosition, destination, setDirectionsSteps);
+    setShowDirections(true); // DirectionsList를 보여줌
   };
 
   const handleVoiceInput = () => {
@@ -182,108 +136,31 @@ const MapPage = () => {
     }
   };
 
+  const handleCloseDirections = () => {
+    setShowDirections(false); // DirectionsList 닫기
+  };
+
   return (
-    <div style={{ padding: '16px', backgroundColor: '#1d1d1d', color: '#fff', fontFamily: 'Arial, sans-serif', height: '100vh' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-        <input
-          ref={autocompleteRef}
-          type="text"
-          placeholder="여기서 검색하세요..."
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setShowPlacesList(true);
-          }}
-          style={{
-            width: 'calc(100% - 50px)', // 검색바가 음성 버튼을 제외한 공간을 차지하게 조정
-            padding: '12px',
-            fontSize: '16px',
-            borderRadius: '8px',
-            border: 'none',
-            marginRight: '10px',
-            backgroundColor: '#2c2c2c',
-            color: '#fff',
-          }}
-        />
-        <button
-          onClick={handleVoiceInput}
-          style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '50%',
-            backgroundColor: isListening ? '#ffaa00' : '#2c2c2c',
-            border: 'none',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          🎤
-        </button>
-      </div>
+    <div className="map-page">
+      <SearchBar
+        query={query}
+        setQuery={(value) => {
+          setQuery(value);
+          setShowPlacesList(true);
+        }}
+        handleVoiceInput={handleVoiceInput}
+        isListening={isListening}
+        autocompleteRef={autocompleteRef}
+      />
 
       {showPlacesList && places.length > 0 && (
-        <div style={{
-          backgroundColor: '#2c2c2c',
-          borderRadius: '8px',
-          padding: '8px',
-          zIndex: 1,
-          position: 'relative',
-          width: '100%',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-          maxHeight: '200px',
-          overflowY: 'auto'
-        }}>
-          <ul style={{ listStyleType: 'none', padding: '0', margin: '0' }}>
-            {places.map((place, index) => (
-              <li
-                key={index}
-                onClick={() => handlePlaceSelect(place)}
-                style={{
-                  padding: '12px',
-                  cursor: 'pointer',
-                  borderBottom: '1px solid #3d3d3d',
-                  color: '#fff',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div>
-                  <strong>{place.name}</strong>
-                  <p style={{ margin: '0', fontSize: '12px', color: '#aaa' }}>{place.vicinity}</p>
-                  <p style={{ margin: '0', fontSize: '12px', color: '#aaa' }}>
-                    {distances[place.place_id] ? `거리: ${distances[place.place_id]} km` : '계산 중...'}
-                  </p>
-                </div>
-                <button style={{
-                  backgroundColor: '#ffaa00',
-                  border: 'none',
-                  borderRadius: '4px',
-                  padding: '4px 8px',
-                  cursor: 'pointer',
-                  color: '#000',
-                  fontWeight: 'bold'
-                }}>선택</button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <PlacesList places={places} handlePlaceSelect={handlePlaceSelect} distances={distances} />
       )}
-      <div ref={mapRef} style={{ width: '100%', height: '400px', marginTop: '20px' }} />
 
-      {directionsSteps.length > 0 && (
-        <div style={{ marginTop: '20px', padding: '16px', backgroundColor: '#2c2c2c', borderRadius: '8px', maxHeight: '200px', overflowY: 'auto' }}>
-          <h3>가는 길</h3>
-          <ul style={{ listStyleType: 'none', padding: '0', margin: '0', color: '#fff' }}>
-            {directionsSteps.map((step, index) => (
-              <li key={index} style={{ marginBottom: '10px' }}>
-                <div dangerouslySetInnerHTML={{ __html: step.instructions }} style={{ fontSize: '14px', marginBottom: '4px' }} />
-                <small style={{ color: '#aaa' }}>{step.distance} - {step.duration}</small>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div ref={mapRef} className="map-container" />
+
+      {showDirections && directionsSteps.length > 0 && (
+        <DirectionsList directionsSteps={directionsSteps} onClose={handleCloseDirections} />
       )}
     </div>
   );
