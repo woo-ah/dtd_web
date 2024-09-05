@@ -15,6 +15,12 @@
   margin-bottom: 5vw;
 }
 
+.unlockcamera-button-group {
+  display: flex;
+  gap: 4vw;
+  flex-direction: column;
+  justify-content: center;
+}
 .unlockcamera-camera-button {
   background-color: #ffc546; /* 강조 색상 */
   color: #333333; /* 버튼 텍스트 색상 */
