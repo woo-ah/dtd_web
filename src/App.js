@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation, Navigate, useParams } from 'react-router-dom';
 import SplashPage from './pages/SplashPage';
 import AuthPage from './pages/AuthPage';
 import SavedPage from './pages/SavedPage';
@@ -30,8 +30,7 @@ import ReportPage from './pages/Profile/ReportPage';
 import ReportIssuePage from './pages/Profile/ReportIssuePage';
 import ActivityPage from './pages/Profile/ActivityPage';
 
-
-
+import RoomSelectionPage from './pages/InnerNavi/RoomSelectionPage'; // RoomSelectionPage 추가
 
 function App() {
   return (
@@ -86,14 +85,18 @@ function AppContent() {
         <Route path="/inner-receive-video" element={<InnerReceiveVideoPage />} />
         <Route path="/inner-broadcast-video" element={<InnerBroadcastVideoPage />} />
 
+        {/* Room 선택 페이지 (역할 선택 후 룸으로 이동) */}
+        <Route path="/room-selection" element={<RoomSelectionPage />} /> {/* Room 선택 페이지 추가 */}
+        <Route
+          path="/room/:roomId/:role"
+          element={<RoleBasedPage />}  // 역할 기반 페이지 라우팅 추가
+        />
 
         {/* Profile 페이지들 */}
         <Route path="/profile-info" element={<ProfileInfoPage />} />
         <Route path="/profile-report" element={<ReportPage />} />
         <Route path="/profile-report-issue" element={<ReportIssuePage />} />
         <Route path="/profile-activity" element={<ActivityPage />} />
-
-        
 
         {/* 기본 경로로 접근할 때 SplashPage로 리다이렉트 */}
         <Route path="*" element={<Navigate to="/" replace />} />
@@ -103,6 +106,19 @@ function AppContent() {
       {showNavigation && <Navigation />}
     </div>
   );
+}
+
+// 역할에 따라 다른 컴포넌트로 이동 (스트리밍 또는 시청)
+function RoleBasedPage() {
+  const { roomId, role } = useParams();
+
+  if (role === 'streamer') {
+    return <InnerBroadcastVideoPage roomId={roomId} />;
+  } else if (role === 'viewer') {
+    return <InnerReceiveVideoPage roomId={roomId} />;
+  } else {
+    return <Navigate to="/room-selection" />;
+  }
 }
 
 export default App;

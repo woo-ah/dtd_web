@@ -30,15 +30,16 @@ function InnerNaviPage() {
         icon={FaVideo} 
         title="영상 중계 받기" 
         description="영상 촬영 실시간 안내 받기"
-        onClick={() => navigate('/inner-receive-video')}
+        onClick={() => navigate('/room-selection?role=viewer')}  // 시청자 역할 선택
       />
-      
+
       <InnerNaviOption 
         icon={FaMicrophone} 
         title="영상 중계 하기" 
         description="촬영된 영상 실시간 안내 하기"
-        onClick={() => navigate('/inner-broadcast-video')}
+        onClick={() => navigate('/room-selection?role=streamer')}  // 스트리머 역할 선택
       />
+
     </div>
   );
 }

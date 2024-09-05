@@ -1,6 +1,7 @@
-// services/firebaseService.js
+// services/Door/firebaseService.js
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
+import 'firebase/compat/database';  // Realtime Database 추가
 
 // Firebase 설정
 const firebaseConfig = {
@@ -17,6 +18,9 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+
+// Firebase Realtime Database 가져오기
+export const database = firebase.database();
 
 // Firebase에 이미지 업로드 후 URL 가져오기
 export const uploadImageToFirebase = async (blob) => {

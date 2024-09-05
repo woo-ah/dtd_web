@@ -1,17 +1,23 @@
-// src/pages/UnlockSearchPage.js
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import InnerNaviHeader from '../../components/InnerNaviPage/InnerNaviHeader';
+// src/pages/InnerNavi/InnerReceiveVideoPage.js
+import React, { useEffect, useRef } from 'react';
+import { createPeerConnection } from '../../services/WebRTC/peerConnection';
 
-function InnerReceiveVideoPage() {
-  const navigate = useNavigate();
+function InnerReceiveVideoPage({ roomId }) {
+  const remoteVideoRef = useRef(null);
+
+  useEffect(() => {
+    // WebRTC 피어 연결 설정
+    const peerConnection = createPeerConnection(roomId, (stream) => {
+      remoteVideoRef.current.srcObject = stream;
+    }, false);  // 시청하는 사람
+
+    return () => peerConnection.close();
+  }, [roomId]);
 
   return (
-    <div className="unlock-page">
-      <InnerNaviHeader title="내부 길 영상 중계 받기" onBack={() => navigate(-1)} />
-      <div className="content">
-        <p>문 정보 검색하기 페이지 내용</p>
-      </div>
+    <div>
+      <h1>시청 중...</h1>
+      <video ref={remoteVideoRef} autoPlay playsInline />
     </div>
   );
 }
