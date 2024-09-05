@@ -2,13 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { getRoomList } from '../../services/Door/firebaseService';
 import { sendMessage } from '../../services/WebRTC/messaging';
-import { useNavigate } from 'react-router-dom';
 
 function InnerBroadcastVideoPage() {
   const [rooms, setRooms] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchRooms() {
@@ -39,7 +37,7 @@ function InnerBroadcastVideoPage() {
 
       {selectedRoom && (
         <div>
-          <h2>선택된 룸: {selectedRoom}</h2>
+          <h2>선택된 룸: {selectedRoom}</h2> {/* 선택된 방 ID 표시 */}
           <input
             type="text"
             value={message}
