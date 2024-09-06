@@ -7,6 +7,7 @@
     min-height: 100vh;
     padding: 2vw;
     color: #ffffff; /* 텍스트 색상 */
+    margin-bottom: 20vw; /* 하단 마진 추가 */
   }
   
   .inner-video-container {
@@ -36,6 +37,7 @@
     width: 100%;
     max-width: 600px;
     margin-top: 5vw;
+
   }
   
   .message-list h2 {
