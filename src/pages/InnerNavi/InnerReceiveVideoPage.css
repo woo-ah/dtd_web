@@ -1,0 +1,59 @@
+.inner-video-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #333333; /* 배경 색상 */
+    min-height: 100vh;
+    padding: 2vw;
+    color: #ffffff; /* 텍스트 색상 */
+  }
+  
+  .inner-video-container {
+    margin-top: 2vw;
+  }
+  
+  .inner-video {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20vw; /* 하단 마진 추가 */
+  }
+  
+  .camera-toggle-button {
+    background-color: #ffc546; /* 버튼 배경 색상 */
+    border: none;
+    border-radius: 25px;
+    padding: 1vw 5vw;
+    font-size: 4vw;
+    color: #333333; /* 버튼 텍스트 색상 */
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2vw 0;
+  }
+  
+  .message-list {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 5vw;
+  }
+  
+  .message-list h2 {
+    font-size: 5vw;
+    margin-bottom: 2vw;
+  }
+  
+  .message-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .message-list li {
+    font-size: 4vw;
+    background-color: #444444; /* 메시지 배경 색상 */
+    padding: 2vw;
+    margin-bottom: 1vw;
+    border-radius: 10px;
+    word-wrap: break-word;
+  }
+  

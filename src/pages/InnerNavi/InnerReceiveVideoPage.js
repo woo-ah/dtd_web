@@ -3,6 +3,7 @@ import { createRoom } from '../../services/Door/firebaseService';
 import { createPeerConnection } from '../../services/WebRTC/peerConnection';
 import { addLocalStreamToPeerConnection, startLocalVideo } from '../../services/WebRTC/videoStream';
 import { receiveMessages } from '../../services/WebRTC/messaging';
+import './InnerReceiveVideoPage.css';  // 스타일 파일 추가
 
 function InnerReceiveVideoPage() {
   const localVideoRef = useRef(null);
@@ -30,7 +31,6 @@ function InnerReceiveVideoPage() {
       if (error.name === 'OverconstrainedError') {
         console.warn('요구한 카메라를 찾을 수 없습니다. 기본 카메라로 대체합니다.');
   
-        // fallback으로 기본 카메라로 다시 시도
         const fallbackConstraints = {
           video: true,
           audio: true,
@@ -42,31 +42,27 @@ function InnerReceiveVideoPage() {
         return localStream;
       }
   
-      throw error;  // 다른 오류일 경우 그대로 throw
+      throw error;  
     }
   };
-  
 
-  // 카메라 전환 함수
   const toggleCamera = async () => {
-    setIsBackCamera((prevState) => !prevState); // 카메라 방향 상태 변경
-    await startCamera(!isBackCamera); // 카메라 방향에 따라 스트림 다시 시작
+    setIsBackCamera((prevState) => !prevState); 
+    await startCamera(!isBackCamera); 
   };
 
   useEffect(() => {
     async function startStreaming() {
-      const newRoomId = await createRoom();  // 새로운 방 생성
-      setRoomId(newRoomId);  // 생성된 방 ID 저장
-      const localStream = await startCamera(isBackCamera);  // 로컬 비디오 시작
-      const peerConnection = createPeerConnection(newRoomId, null, true);  // 스트리머로 연결
-      addLocalStreamToPeerConnection(localStream, peerConnection);  // 스트림을 피어 연결에 추가
+      const newRoomId = await createRoom(); 
+      setRoomId(newRoomId);  
+      const localStream = await startCamera(isBackCamera); 
+      const peerConnection = createPeerConnection(newRoomId, null, true); 
+      addLocalStreamToPeerConnection(localStream, peerConnection); 
 
-      // 메시지 수신 설정
       const unsubscribeMessages = receiveMessages(newRoomId, (msg) => {
         setMessages((prevMessages) => [...prevMessages, msg]);
       });
 
-      // 컴포넌트 언마운트 시 메시지 수신 구독 해제
       return () => {
         unsubscribeMessages();
         peerConnection.close();
@@ -74,19 +70,19 @@ function InnerReceiveVideoPage() {
     }
 
     startStreaming();
-  }, [isBackCamera]);  // 카메라 방향 상태가 변경될 때마다 스트리밍 다시 시작
+  }, [isBackCamera]);  
 
   return (
-    <div>
+    <div className="inner-video-page">
       <h1>영상 송출 중...</h1>
-      <p>현재 방 ID: {roomId}</p> {/* 방 ID 표시 */}
-      <video ref={localVideoRef} autoPlay playsInline muted />
+      <p>현재 방 ID: {roomId}</p> 
+      <div className="inner-video-container">
+        <video ref={localVideoRef} className="inner-video" autoPlay playsInline muted />
+      </div>
 
-      {/* 카메라 전환 버튼 */}
-      <button onClick={toggleCamera}>카메라 전환</button>
+      <button className="camera-toggle-button" onClick={toggleCamera}>카메라 전환</button>
 
-      {/* 메시지 목록 */}
-      <div>
+      <div className="message-list">
         <h2>메시지 목록</h2>
         <ul>
           {messages.map((msg, index) => (
