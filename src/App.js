@@ -32,6 +32,8 @@ import ActivityPage from './pages/Profile/ActivityPage';
 
 import RoomSelectionPage from './pages/InnerNavi/RoomSelectionPage'; // RoomSelectionPage 추가
 
+import PreparingPage from './pages/PreparingPage';
+
 function App() {
   return (
     <Router>
@@ -97,6 +99,8 @@ function AppContent() {
         <Route path="/profile-report" element={<ReportPage />} />
         <Route path="/profile-report-issue" element={<ReportIssuePage />} />
         <Route path="/profile-activity" element={<ActivityPage />} />
+
+        <Route path="/preparing" element={<PreparingPage />} />
 
         {/* 기본 경로로 접근할 때 SplashPage로 리다이렉트 */}
         <Route path="*" element={<Navigate to="/" replace />} />

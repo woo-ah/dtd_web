@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 임포트
 import Header from '../components/InnerNaviPage/Header';
 import InnerNaviOption from '../components/InnerNaviPage/InnerNaviOption';
-import { FaSearch, FaCamera, FaVideo, FaMicrophone } from 'react-icons/fa';
+import { FaSearch, FaVideo, FaMicrophone } from 'react-icons/fa';
 import '../css/InnerNaviPage.css'; // 페이지 전용 스타일(있다면) 임포트
 
 function InnerNaviPage() {
@@ -19,12 +19,12 @@ function InnerNaviPage() {
         onClick={() => navigate('/innernavi-search')}
       />
       
-      <InnerNaviOption 
+      {/* <InnerNaviOption 
         icon={FaCamera} 
         title="비콘으로 내부 길 찾기" 
         description="비콘을 통하여 내부 길 안내"
         onClick={() => navigate('/innernavi-beacon')}
-      />
+      /> */}
       
       <InnerNaviOption 
         icon={FaVideo} 

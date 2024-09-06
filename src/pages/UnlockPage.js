@@ -11,7 +11,13 @@ function UnlockPage() {
   return (
     <div className="unlock-page">
       <Header/>
-      
+      <UnlockOption 
+        icon={FaCamera} 
+        title="문 사진 촬영하기" 
+        description="문의 위치, 여는 방법, 문 사용법 안내"
+        onClick={() => navigate('/unlock-camera-intro')}
+      />
+    
       <UnlockOption 
         icon={FaSearch} 
         title="문 정보 검색하기" 
@@ -20,24 +26,17 @@ function UnlockPage() {
       />
       
       <UnlockOption 
-        icon={FaCamera} 
-        title="문 사진 촬영하기" 
-        description="문의 위치, 여는 방법, 문 사용법 안내"
-        onClick={() => navigate('/unlock-camera-intro')}
-      />
-      
-      <UnlockOption 
         icon={FaVideo} 
         title="영상 중계 받기" 
         description="영상 촬영 실시간 안내 받기"
-        onClick={() => navigate('/receive-video')}
+        onClick={() => navigate('/inner-receive-video')}
       />
       
       <UnlockOption 
         icon={FaMicrophone} 
         title="영상 중계 하기" 
         description="촬영된 영상 실시간 안내 하기"
-        onClick={() => navigate('/broadcast-video')}
+        onClick={() => navigate('/inner-broadcast-video')}
       />
     </div>
   );

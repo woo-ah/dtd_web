@@ -1,0 +1,67 @@
+.Unlock-search-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 상단에 고정 */
+    align-items: center; /* 가로 중앙 정렬 */
+    background-color: #333333;
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+.Unlock-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10vw; /* 검색창과 결과 메시지 사이의 여백 */
+}
+
+.Unlock-search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    padding: 2vw;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 5vw; /* 검색 바 상단 여백 조정 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Unlock-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 4vw;
+    color: #333333;
+    padding-left: 10px;
+}
+
+.Unlock-search-button {
+    background-color: #ffc546;
+    border: none;
+    border-radius: 25px;
+    padding: 1vw 4vw;
+    font-size: 4vw;
+    color: #333333;
+    cursor: pointer;
+    margin-left: 2vw;
+}
+
+.Unlock-search-result-message {
+    text-align: center;
+    margin-top: 10vw;
+}
+
+.Unlock-search-result-message h2 {
+    font-size: 6vw;
+    margin-bottom: 4vw;
+}
+
+.Unlock-search-result-message p {
+    font-size: 4vw;
+    margin-bottom: 6vw;
+    color: #cccccc;
+}
