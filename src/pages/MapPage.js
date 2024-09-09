@@ -49,7 +49,7 @@ const MapPage = () => {
 
       if (!existingScript) {
         const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCzx-t7oxFd2X4i9tBxgDucOyTZXWHW05I&libraries=places,geometry&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=GoogleAPI입력&libraries=places,geometry&callback=initMap`;
         script.id = 'googleMaps';
         script.async = true;
         script.defer = true;
